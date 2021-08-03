@@ -12,13 +12,16 @@ export default async (window: Window) => {
         clickedPoint,
       }
 
-      const response = await chrome.runtime.sendMessage({
-        action: 'aiueo1',
-        data: params,
-      }, (response) => {
-        console.log(`response: ${response}`)
-        return Promise.resolve(response)
-      })
+      const response = await chrome.runtime.sendMessage(
+        {
+          action: 'aiueo1',
+          data: params,
+        },
+        (response) => {
+          console.log(`response: ${response}`)
+          return Promise.resolve(response)
+        }
+      )
     },
     sendMessageHandler: (msg: any) => {
       console.log(
@@ -27,7 +30,6 @@ export default async (window: Window) => {
         JSON.stringify(msg.data)
       )
       if (isMainFrame()) {
-        console.log('on weup frame')
         switch (msg.action) {
           case 'aiueo2':
             console.log('received sendMessage in contentScript.')
@@ -61,4 +63,3 @@ function initScreen(window: Window, handlers: Handlers) {
   const boundSendMessageHandler = handlers.sendMessageHandler.bind(this)
   chrome.runtime.onMessage.addListener(boundSendMessageHandler)
 }
-
