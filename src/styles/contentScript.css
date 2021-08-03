@@ -1,0 +1,12 @@
+.__cy-record-target-highlighted {
+  outline: thick solid #4497f6 !important;
+}
+.__cy-hover-highlighted {
+  outline: thick solid rgb(218, 135, 235) !important;
+}
+.__cy-extract-highlighted {
+  outline: thick solid rgb(235, 135, 148) !important;
+}
+.__cy-target-element-highlighted {
+  outline: solid 4px rgb(218, 135, 235) !important;
+}

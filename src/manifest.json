@@ -1,0 +1,29 @@
+{
+  "name": "cypress-extension",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "helpful tool for cypress",
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_icon": "images/logo.png",
+    "default_popup": "popup.html",
+    "default_title": "cypress extension"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["contentScript.js"],
+      "css": ["styles/contentScript.css"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "optional_permissions": [],
+  "host_permissions": ["*://*/*"]
+}
